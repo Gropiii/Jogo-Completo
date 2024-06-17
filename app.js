@@ -1,19 +1,22 @@
 let listaNumerosSorteados = [];
-
-var dificuldade = prompt('Escolha a dificuldade (1,2,3)');
-console.log (`A dificuldade escolhida foi ${dificuldade}`)
 let numeroMaximo;
-if (dificuldade==1){
- numeroMaximo=10;  
-} else {
-if (dificuldade==2){
-    numeroMaximo=100; 
-} else {
-    if (dificuldade==3){
-    numeroMaximo=1000; 
-}}}
+function escolherDificuldade(){
+    var dificuldadeEscolhida = nivel(prompt('Escolha a dificuldade (1,2,3)'));
+    function nivel(dificuldade) {
+        console.log (`A dificuldade escolhida foi ${dificuldade}`);
+        if (dificuldade==1){
+         numeroMaximo=10;  
+        } else {
+        if (dificuldade==2){
+            numeroMaximo=100; 
+        } else {
+            if (dificuldade==3){
+            numeroMaximo=1000; 
+        }}}  
+    }
+};
+escolherDificuldade();
 
-let limiteLista = numeroMaximo;
 let numeroSecreto = gerarNumeroAleatorio();
 console.log (`O número secreto é `, numeroSecreto);
 let tentativas = 1;
@@ -55,10 +58,10 @@ function exibirMensagemInicial() {
 }
 
 function gerarNumeroAleatorio() {
-    let numeroAleatorio = parseInt(Math.random() * limiteLista + 1);
+    let numeroAleatorio = parseInt(Math.random() * numeroMaximo + 1);
     let quantidadeDeNumeros = listaNumerosSorteados.length;
 
-    if (quantidadeDeNumeros == limiteLista) {
+    if (quantidadeDeNumeros == numeroMaximo) {
         listaNumerosSorteados = [];
     }
     if (listaNumerosSorteados.includes(numeroAleatorio)){
@@ -71,6 +74,7 @@ function gerarNumeroAleatorio() {
 }
 
 function novoJogo() {
+    dificuldade = escolherDificuldade();
     document.getElementById('reiniciar').setAttribute('disabled',true);
     numeroSecreto = gerarNumeroAleatorio();
     console.log (`O número secreto é `, numeroSecreto);
