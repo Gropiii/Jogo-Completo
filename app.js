@@ -21,6 +21,7 @@ let numeroSecreto = gerarNumeroAleatorio();
 console.log (`O número secreto é `, numeroSecreto);
 let tentativas = 1;
 
+
 function textosDaTela(tag,texto) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
@@ -32,7 +33,7 @@ function exibirMensagemInicial() {
    textosDaTela('p',`Escolha um número de 1 a ${numeroMaximo}.`);  
  }
 
-   exibirMensagemInicial()
+   exibirMensagemInicial();
 
    function verificarChute() {
     let chute = document.querySelector('input').value;
@@ -56,6 +57,12 @@ function exibirMensagemInicial() {
     }
 }
 }
+
+document.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      verificarChute();
+    }
+  });
 
 function gerarNumeroAleatorio() {
     let numeroAleatorio = parseInt(Math.random() * numeroMaximo + 1);
