@@ -1,5 +1,6 @@
 let listaNumerosSorteados = [];
 let numeroMaximo;
+let teste;
 function escolherDificuldade(){
     var dificuldadeEscolhida = nivel(prompt('Escolha a dificuldade (1,2,3)'));
     function nivel(dificuldade) {
